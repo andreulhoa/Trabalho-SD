@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <form action="/notify" id="player-form" method="post">
+            <h2>Pesquise seu clube</h2>
+            <div class="form-group">
+                <label for="team">Clube</label>
+                <input type="text" id="team" name="team">
+            </div>
+            <div class="form-group">
+                <label for="email">email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <button type="submit">Procurar Jogadores</button>
+        </form>
+    </div>
+    <script src="./index.js" charset = "utf-8"></script>
+</body>
+</html>

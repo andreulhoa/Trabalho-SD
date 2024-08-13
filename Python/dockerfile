@@ -1,0 +1,25 @@
+# Usar uma imagem base oficial do Python
+FROM python:3.9-slim
+
+# Definir o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copiar os arquivos de requisitos
+COPY requirements.txt /app/
+
+# Instalar as dependências do Python e o curl
+RUN pip install --no-cache-dir -r /app/requirements.txt && \
+    apt-get update && apt-get install -y curl && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copiar o conteúdo da aplicação para o diretório de trabalho no contêiner
+COPY baixar_paginas.sh /app/
+COPY dataCleaning.py /app/
+
+# Dar permissão de execução ao script bash
+RUN chmod +x /app/baixar_paginas.sh
+
+# Criar a diretoria onde os arquivos baixados serão salvos
+RUN mkdir -p /app/Python/paginas_html
+
+CMD ["/bin/bash", "-c", "/app/baixar_paginas.sh && python /app/dataCleaning.py"]

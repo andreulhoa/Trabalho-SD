@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  python-app:
+    build:
+      context: ./Python
+      dockerfile: dockerfile
+    depends_on:
+      - node-server
+    volumes:
+      - ./Python:/app
+
+  node-server:
+    build:
+      context: ./Node
+      dockerfile: dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./Node:/app
