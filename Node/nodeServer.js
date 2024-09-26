@@ -11,14 +11,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public')); 
 
 const transporter = nodemailer.createTransport({
+    //preencher o user e o pass com o email e a senha de alguma hotmail para funcionar
     service: 'hotmail',
     auth: {
-        user: 'andreulhoawerneck@hotmail.com', 
-        pass: 'Auw22102002#'
+        user: 'webScrapingTeste@hotmail.com', 
+        pass: 'ScrapingDeDados'
     }
 });
 
 app.post('/upload', (req, res) => {
+    console.log("entrei");
     players = req.body;
     players.sort((a, b) => a.overall - b.overall);
 });
@@ -37,7 +39,7 @@ app.get('/', (req, res) => {
 
 function sendUserSearchEmail(userSearch, userMail,team) {
     const mailOptions = {
-        from: 'andreulhoawerneck@hotmail.com', 
+        from: 'webScrapingTeste@hotmail.com', 
         to: userMail, 
         subject: 'Resultados da Pesquisa de Jogadores',
         text: `Resultados da pesquisa para o time ${team}:\n\n` + 
