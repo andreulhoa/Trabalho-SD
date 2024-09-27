@@ -19,8 +19,8 @@ download_page() {
 }
 
 # Baixar as páginas
-for i in $(seq 0 33); do
-    url="https://pt-br.soccerwiki.org/search/player?firstname=&surname=&nationality=&leagueid=&position=&minrating=60&maxrating=99&minage=15&maxage=60&country=&minheight=150&maxheight=220&foot=&submit=&offset=$((i * 15))"
+for i in $(seq 0 200); do
+    url="https://pt-br.soccerwiki.org/search/player?firstname=&surname=&nationality=&leagueid=&position=&minrating=60&maxrating=99&minage=15&maxage=60&country=&minheight=150&maxheight=220&foot=&submit=&offset=$((i))"
     output_file="${output_dir}/paginasBaixadas_$((i + 1)).html"
     download_page "$url" "$output_file"
 done
